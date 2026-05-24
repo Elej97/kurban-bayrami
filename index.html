@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kurban Bayramın Mübarek Olsun 🎁</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --mint:#b9f5d8;
+  --sky:#bfe9ff;
+  --cream:#fff8dd;
+  --soft-green:#d7f8c8;
+  --gold:#ffd66b;
+  --coral:#ff9f9f;
+  --text:#27505d;
+  --deep:#1c6b76;
+  --glass-bg:rgba(255,255,255,.38);
+  --glass-border:rgba(255,255,255,.65);
+  --gift-main-1:#ff5757; /* prominent red */
+  --gift-main-2:#b30000; /* deep red */
+  --gift-lid-a:#ffd57a; /* gold accent */
+  --gift-lid-b:#fff4b2; /* soft yellow accent */
+}
+html,body{width:100%;min-height:100%;}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  min-height:100dvh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  position:relative;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(185,235,255,.75), transparent 32%),
+    radial-gradient(circle at 80% 20%, rgba(204,255,222,.8), transparent 30%),
+    radial-gradient(circle at 50% 95%, rgba(202,230,255,.8), transparent 38%),
+    linear-gradient(135deg,#f8ffff,#eef9ff,#f8fff7);
+}
+
+/* ── BACKGROUND (ported from 12.html) ── */
+.bg{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.dot{
+  position:absolute;
+  border-radius:50%;
+  opacity:.75;
+  animation:twinkle 3s ease-in-out infinite;
+}
+
+.float{
+  position:absolute;
+  border-radius:50%;
+  opacity:.55;
+  animation:floatUp linear infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{transform:scale(.8);opacity:.35}
+  50%{transform:scale(1.35);opacity:1}
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(110vh) translateX(0);opacity:0}
+  18%{opacity:.75}
+  100%{transform:translateY(-20vh) translateX(var(--x));opacity:0}
+}
+
+/* ── FLASH + PARTICLES ── */
+#flash{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.9) 0%,rgba(191,233,255,.34) 35%,transparent 72%);}
+#flash.aktif{animation:flashBurst .55s ease-out forwards;}
+@keyframes flashBurst{0%{opacity:0;}18%{opacity:1;}100%{opacity:0;}}
+#parcaciklar{position:fixed;inset:0;pointer-events:none;z-index:50;}
+.parcacik{position:absolute;border-radius:50%;pointer-events:none;animation:parcFly var(--dur,1.2s) cubic-bezier(.25,.46,.45,.94) forwards;}
+.parcacik.spark{border-radius:2px;}
+@keyframes parcFly{0%{transform:translate(0,0) scale(1) rotate(0deg);opacity:1;}70%{opacity:1;}100%{transform:translate(var(--tx),var(--ty)) scale(0) rotate(var(--rot,360deg));opacity:0;}}
+
+/* ── CARD ── */
+#card{
+  position:relative;z-index:10;
+  width:min(420px,94vw);
+  padding:clamp(18px,4vw,28px);
+  border-radius:32px;
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:0 20px 70px rgba(66,151,165,.20), inset 0 1px 0 rgba(255,255,255,.7), 0 0 0 1px rgba(255,255,255,.25);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+  overflow:visible;
+  animation:cardAppear 1s cubic-bezier(.23,1,.32,1) forwards;
+}
+#card::before{content:'';position:absolute;inset:-1px;border-radius:33px;background:linear-gradient(135deg,rgba(255,255,255,.65),transparent 40%,rgba(185,245,216,.38),rgba(191,233,255,.45));z-index:-1;animation:shimmerBorder 4s linear infinite;}
+@keyframes cardAppear{from{opacity:0;transform:translateY(26px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+@keyframes shimmerBorder{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+/* ── TITLE ── */
+#baslik-wrap{text-align:center;position:relative;}
+#baslik-line1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,7vw,3rem);
+  line-height:1.08;
+  font-weight:700;
+  display:block;
+  background:linear-gradient(135deg,#1c9ab0 0%,#4dbd90 45%,#e8ad35 85%);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 7px 18px rgba(70,171,178,.18));
+  animation:gradientShift 4s ease infinite,titleFloat 3s ease-in-out infinite;
+}
+#baslik-line2{
+  display:block;
+  margin-top:10px;
+  font-size:clamp(.9rem,2.6vw,1.08rem);
+  color:rgba(39,80,93,.75);
+  font-weight:600;
+  letter-spacing:.02em;
+}
+#baslik-wrap::after{content:'✦  ✦  ✦';display:block;font-size:.55rem;letter-spacing:.8em;color:rgba(28,154,176,.35);margin-top:.7rem;}
+@keyframes gradientShift{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+@keyframes titleFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+
+/* ── GIFTS ── */
+.gifts-column, #gifts{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center;
+  justify-content:center;
+}
+.gift-slot{
+  width:min(420px,100%);
+  min-height:160px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:visible;
+  background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.35));
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 20px 48px rgba(0,0,0,.12), inset 0 2px 0 rgba(255,255,255,.6);
+  transition:transform .3s ease, opacity .3s ease;
+}
+.gift-slot.selected-slot{z-index:2;box-shadow:0 24px 56px rgba(0,0,0,.2), inset 0 2px 0 rgba(255,255,255,.65)}
+.gift-slot.fly-away{pointer-events:none;animation:slotExit 2.75s cubic-bezier(.14,.86,.22,1) forwards;will-change:transform,opacity,filter}
+.gift-slot.fly-away[data-exit="left"]{--sx:-165vw;--rot:-14deg}
+.gift-slot.fly-away[data-exit="right"]{--sx:165vw;--rot:14deg}
+@keyframes slotExit{
+  0%{opacity:1;transform:translate(0,0) scale(1) rotate(0)}
+  18%{opacity:1;transform:translate(calc(var(--sx)*.10),0) scale(.995) rotate(calc(var(--rot)*.14))}
+  38%{opacity:.96;transform:translate(calc(var(--sx)*.28),0) scale(.985) rotate(calc(var(--rot)*.32))}
+  62%{opacity:.82;transform:translate(calc(var(--sx)*.60),0) scale(.95) rotate(calc(var(--rot)*.66))}
+  82%{opacity:.56;transform:translate(calc(var(--sx)*.84),0) scale(.90) rotate(calc(var(--rot)*.88))}
+  100%{opacity:0;transform:translate(var(--sx),0) scale(.84) rotate(var(--rot))}
+}
+.gift-btn{
+  width:100%;
+  min-height:160px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:12px 20px;
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  transition:transform .18s ease, filter .18s ease;
+}
+.gift-btn:hover{transform:translateY(-6px) scale(1.02);filter:saturate(1.05)}
+.gift-box{
+  position:relative;
+  width:120px;
+  height:96px;
+  border-radius:14px 14px 16px 16px;
+  background:linear-gradient(135deg,var(--gift-main-1),var(--gift-main-2));
+  box-shadow:0 18px 40px rgba(0,0,0,.18), inset 0 6px 14px rgba(255,255,255,.18);
+  flex:0 0 auto;
+  animation:giftFloat 2.6s ease-in-out infinite;
+}
+.gift-box::before{
+  content:'';
+  position:absolute;
+  left:50%;top:0;
+  width:18px;height:100%;
+  transform:translateX(-50%);
+  background:linear-gradient(to bottom,rgba(255,255,255,.72),rgba(255,255,255,.28));
+  border-radius:12px;
+}
+.gift-box::after{
+  content:'';
+  position:absolute;
+  left:-8px;right:-8px;top:-18px;height:26px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--gift-lid-a),var(--gift-lid-b));
+  box-shadow:0 10px 20px rgba(0,0,0,.12), inset 0 4px 8px rgba(255,255,255,.2);
+}
+.gift-label{text-align:left;line-height:1.2;}
+.gift-label strong{display:block;font-size:1.05rem;color:var(--deep);}
+.gift-label span{display:block;margin-top:4px;font-size:.82rem;color:rgba(39,80,93,.66);}
+.message-card{
+  width:100%;
+  min-height:112px;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border-radius:26px;
+  font-size:clamp(.95rem,3.7vw,1.18rem);
+  line-height:1.42;
+  font-weight:700;
+  color:#205461;
+  background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(215,248,200,.48),rgba(191,233,255,.48));
+  text-shadow:0 1px 0 rgba(255,255,255,.85);
+  animation:messagePopCenter .42s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes giftFloat{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-5px) rotate(1deg);}}
+@keyframes messagePopCenter{0%{opacity:0;transform:scale(1.18)}60%{opacity:1;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
+
+.note{
+  font-size:.78rem;
+  color:rgba(39,80,93,.57);
+  text-align:center;
+  line-height:1.4;
+  margin-top:-2px;
+}
+
+/* keep vertical layout on larger screens per request */
+@media(min-width:760px){
+  #card{width:min(720px,94vw);} 
+  .gift-slot{min-height:180px}
+  .gift-btn{min-height:180px}
+  .gift-box{width:140px;height:110px}
+  .message-card{min-height:180px}
+}
+@media(max-width:480px){
+  body{align-items:flex-start;padding:14px;}
+  #card{width:94vw;margin-top:10px;padding:16px 14px;gap:13px;border-radius:28px;}
+  #baslik-line1{font-size:clamp(1.85rem,9vw,2.55rem);}
+  #baslik-line2{font-size:.9rem;}
+  #gifts{gap:12px;}
+  .gift-slot{min-height:104px;border-radius:23px;}
+  .gift-btn{min-height:104px;padding:10px 14px;gap:14px;}
+  .gift-box{width:72px;height:62px;}
+  .gift-label strong{font-size:.98rem;}
+  .gift-label span{font-size:.75rem;}
+  .message-card{min-height:104px;padding:14px;font-size:.94rem;border-radius:23px;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" id="bg"></div>
+<div id="flash"></div>
+<div id="parcaciklar"></div>
+
+<main id="card">
+  <div id="baslik-wrap">
+    <span id="baslik-line1">Bayram Mesajını Seç</span>
+    <span id="baslik-line2">Bir kutuya tıkla, mesajını aç 🎁</span>
+  </div>
+
+  <section id="gifts" aria-label="Bayram mesaj kutuları"></section>
+
+  <p class="note">Her kutuda ayrı bir bayram mesajı saklı. Hepsini açabilirsin ✨</p>
+</main>
+
+<script>
+/* ── BACKGROUND DOTS/FLOATS (ported from 12.html) ── */
+const bg = document.getElementById('bg');
+const bgColors = ['#111111','#c1121f','#ff2f6d','#1d4ed8','#14532d','#7c2d12'];
+
+for(let i=0;i<95;i++){
+  const d=document.createElement('span');
+  d.className='dot';
+  const size = Math.random()*5 + 2;
+  d.style.width=size+'px';
+  d.style.height=size+'px';
+  d.style.left=Math.random()*100+'%';
+  d.style.top=Math.random()*100+'%';
+  d.style.background=bgColors[Math.floor(Math.random()*bgColors.length)];
+  d.style.animationDelay=(-Math.random()*4)+'s';
+  bg.appendChild(d);
+}
+
+for(let i=0;i<34;i++){
+  const f=document.createElement('span');
+  f.className='float';
+  const size = Math.random()*7 + 3;
+  f.style.width=size+'px';
+  f.style.height=size+'px';
+  f.style.left=Math.random()*100+'%';
+  f.style.background=bgColors[Math.floor(Math.random()*bgColors.length)];
+  f.style.animationDuration=(8+Math.random()*10)+'s';
+  f.style.animationDelay=(-Math.random()*10)+'s';
+  f.style.setProperty('--x',(Math.random()*90-45)+'px');
+  bg.appendChild(f);
+}
+
+const parcKap = document.getElementById('parcaciklar');
+const flash = document.getElementById('flash');
+const giftsContainer = document.getElementById('gifts');
+const COLORS=['#0b0b0b','#8b0000','#b3003b','#001f4d','#006400','#550033','#2b0033'];
+let giftChosen = false;
+
+const gifts = [
+  {
+    title:'Tatlı Mesaj',
+    hint:'Kurban olduğum için',
+    message:'Kurban Bayramın mübarek olsun, kurban olduğum; yüzün hep gülsün.',
+    box1:'#6fd6c9', box2:'#9ff3d6', lid1:'#ffcf67', lid2:'#ffe28b'
+  },
+  {
+    title:'Bereket Mesajı',
+    hint:'Huzur dolu dilek',
+    message:'Gönlün neşeyle, evin bereketle dolsun; Kurban Bayramın mübarek olsun 🌙',
+    box1:'#7fcfff', box2:'#bfe9ff', lid1:'#8ee6b9', lid2:'#d7f8c8'
+  },
+  {
+    title:'Şeker Mesajı',
+    hint:'En tatlı kutu',
+    message:'Bayram şekerim, kalbin mutlulukla dolsun; Kurban Bayramın mübarek olsun 🌙',
+    box1:'#ffb86b', box2:'#ffd891', lid1:'#8bd7ff', lid2:'#bfe9ff'
+  }
+];
+
+function shuffle(array){
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a,b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+
+function renderGifts(){
+  giftsContainer.innerHTML='';
+  shuffle(gifts).forEach((gift,index)=>{
+    const slot=document.createElement('div');
+    slot.className='gift-slot';
+
+    const btn=document.createElement('button');
+    btn.className='gift-btn';
+    btn.type='button';
+    btn.setAttribute('aria-label', gift.title + ' aç');
+    // render only the gift box (surprise), labels removed
+    btn.innerHTML=`
+      <div class="gift-box" style="--box1:var(--gift-main-1);--box2:var(--gift-main-2);--lid1:var(--gift-lid-a);--lid2:var(--gift-lid-b);animation-delay:${index*.18}s">
+      </div>
+    `;
+
+    btn.addEventListener('click',()=>openGift(slot,gift));
+    slot.appendChild(btn);
+    giftsContainer.appendChild(slot);
+  });
+}
+
+function openGift(slot,gift){
+  if(slot.classList.contains('opened') || giftChosen) return;
+  giftChosen = true;
+  slot.classList.add('opened');
+
+  const allSlots=[...giftsContainer.querySelectorAll('.gift-slot')];
+  allSlots.forEach((other,idx)=>{
+    const btn = other.querySelector('.gift-btn');
+    if(btn) btn.disabled = true;
+    if(other!==slot){
+      const dir = idx % 2 === 0 ? 'left' : 'right';
+      other.dataset.exit = dir;
+      other.classList.add('fly-away');
+      setTimeout(()=>other.remove(), 2750);
+    }
+  });
+
+  slot.classList.add('selected-slot');
+  const rect=slot.getBoundingClientRect();
+  const cx=rect.left+rect.width/2;
+  const cy=rect.top+rect.height/2;
+  flash.classList.add('aktif');
+  setTimeout(()=>flash.classList.remove('aktif'),600);
+  burst(cx,cy,true);
+
+  slot.innerHTML=`<div class="message-card">${gift.message}</div>`;
+}
+
+function burst(cx,cy,mega=false){
+  const TOTAL_PARTICLES = mega
+    ? (window.innerWidth < 420 ? 160 : window.innerWidth < 768 ? 220 : 300)
+    : (window.innerWidth < 420 ? 70 : window.innerWidth < 768 ? 95 : 125);
+  for(let i=0;i<TOTAL_PARTICLES;i++){
+    setTimeout(()=>spawnParticle(cx,cy), i*2 + Math.random()*90);
+  }
+}
+
+function spawnParticle(cx,cy){
+  const el=document.createElement('div');
+  el.classList.add('parcacik');
+  const col=COLORS[Math.floor(Math.random()*COLORS.length)];
+  const isSmall = window.innerWidth < 420;
+  if(Math.random() < .58){
+    const sz = (isSmall ? 2.5 + Math.random()*6 : 3 + Math.random()*9);
+    el.style.width = sz+'px'; el.style.height = sz+'px';
+    el.style.background = `radial-gradient(circle at 30% 30%,white,${col})`;
+    el.style.boxShadow = `0 0 ${Math.max(4,sz*1.5)}px ${col},0 0 ${Math.max(7,sz*2.4)}px ${col}77`;
+  } else {
+    el.classList.add('spark');
+    const w = (isSmall ? 2 + Math.random()*2 : 2 + Math.random()*3);
+    const h = (isSmall ? 5 + Math.random()*9 : 6 + Math.random()*13);
+    el.style.width = w+'px'; el.style.height = h+'px';
+    el.style.background = col; el.style.borderRadius = '2px';
+    el.style.boxShadow = `0 0 ${Math.max(5,h)}px ${col},0 0 ${Math.max(8,h*1.6)}px ${col}88`;
+  }
+  el.style.left=cx+'px'; el.style.top=cy+'px'; el.style.transform='translate(-50%,-50%)';
+  const angle=Math.random()*2*Math.PI;
+  const speed=70+Math.random()*240;
+  const grav=35+Math.random()*105;
+  el.style.setProperty('--tx',(Math.cos(angle)*speed)+'px');
+  el.style.setProperty('--ty',(Math.sin(angle)*speed+grav)+'px');
+  el.style.setProperty('--dur',(.7+Math.random()*1.1)+'s');
+  el.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+  parcKap.appendChild(el);
+  el.addEventListener('animationend',()=>el.remove());
+}
+
+renderGifts();
+</script>
+</body>
+</html>
